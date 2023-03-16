@@ -1,0 +1,43 @@
+1. We use <article></article> because its a small independent part that can be part of the bigger website/project.
+2.Centering our product card - as CSS file says for this project we can use 
+body {
+  display: grid;
+  place-content: center;
+}
+and if it does not work we need to add min-height: 100vh;.
+3. We add spacing around (mobile) with margin: 1rem;
+4. We set grid property on our .product__content container (the one with all the info about the product) so our button can take 100% of its parent container width.
++ as now its grid we can use gap property to add space between our text, insted of using margin-bottom.
+5. <s></s>  --- strike out зачеркнуть BUT look below
+6. <s></s> will not be read by PC so for blind people its bed the we need
+<span>Current price</span>
+<span>Original price</span>
++ CSS
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+7. inline-flex - almost the same as flex, and we need it this time because we have icon inside (and we will need to center all).
+8. So now we gonna make make the design for bigger screens. And first thing we need to decide where its gonna break.
+And before @media we can set display:grid on our .product class so we then can use it in our media query, and its not gonna inpackt on our current design.
+Then in our media query we set 
+@media (min-width: 600px) {
+  .product {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+Move to the picture. At the moment we have two images one in <picture></picture> and the other in <img>.
+To switch between two images we can use this trick: media="(min-width: 600px)"
+<picture class="product__img">
+      <source srcset="images/image-product-desktop.jpg" media="(min-width: 600px)">
+      <img src="images/image-product-mobile.jpg" alt="product display">
+    </picture>
+
+Now the only problem we need to solve - the size of the our product card because as we get our screen bigger the card gets too big.
+So on our .product we set max-width: 600px
